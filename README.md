@@ -3,7 +3,8 @@
 Welcome to ICS 46! This GitHub project will contain all of the project setup material you need for this
 class. This `main` branch will explain all the instructions you need to copy this code to your computer
 (or OpenLab), how modify the files you need to for the assignment, how to build/test your code, and
-finally how to submit! If you want any further in depth instructions on any of the more advanced topics
+finally how to submit! If you want any further in depth instructions on any of the more advanced topic
+
 such as `CMake`, there will be a branch with more information that you can take a look at!
 
 NOTE : Each `branch` will have more specific instructions for each homework. This is a general
