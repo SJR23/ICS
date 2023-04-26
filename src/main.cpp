@@ -2,5 +2,5 @@
 
 int main()
 {
-    measure_lists("random.txt");
+    measure_lists("src/random.txt");
 }
