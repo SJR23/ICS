@@ -72,14 +72,15 @@ int SortedArrayList::find_index(const string& word) {
     int last = size - 1;
     while(first <= last){
         int mid = (first + last)/2;
-        if (buf[mid] == word) 
+        if(buf[mid] == word) 
         {
             return mid;
         } 
-        else if (buf[mid] < word) 
+        else if(buf[mid] < word) 
         {
             first = mid + 1;
-        } else 
+        }
+        else 
         {
             last = mid - 1;
         }
@@ -131,17 +132,17 @@ void ListNode::delete_list(ListNode * L){
 void ListNode::remove(const string & word, ListNode *&L){
     ListNode * prev = L;
     ListNode * cur = L->next;
-    if (L->data == word){
+    if(L->data == word){
         ListNode * note = L;
         L = L->next;
         delete note;
         return;
     }
-    while (cur->data < word){
+    while(cur->data < word){
         prev = cur;
         cur = cur->next;
     }
-    if (cur->data == word){
+    if(cur->data == word){
         prev->next = cur->next;
         delete cur;
     }
