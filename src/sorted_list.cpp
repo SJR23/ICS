@@ -11,11 +11,9 @@ ostream & operator << (ostream & out, SortedList & L){
 }
 
 void SortedArrayList::copy_down(int hole){
-  for(int i = size - 1; i >= hole; i--){
-    if (i + 1 < capacity){
-      buf[i + 1] = buf[i];
+    for(int i = hole + 1; i < size; i++){
+        buf[i - 1] = buf[i];
     }
-  }
 }
 
 void SortedArrayList::copy_up(int hole){
@@ -46,9 +44,7 @@ bool SortedArrayList::find(const string& word){
 void SortedArrayList::remove(const string& word){
     int index = find_index(word);
     if(index < size && buf[index] == word){
-        for(int i = index + 1; i < size; i++){
-            buf[i - 1] = buf[i];
-        }
+        copy_down(index);
         size--;
     }
 }
