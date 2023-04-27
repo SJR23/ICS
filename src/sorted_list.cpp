@@ -1,9 +1,8 @@
-
+#include <iostream>
 #include "sorted_list.h"
 #include "Timer.h"
 #include <string>
 #include <fstream>
-#include <iostream>
 using namespace std;
 
 ostream & operator << (ostream & out, SortedList & L){
@@ -34,8 +33,8 @@ void SortedArrayList::insert(const string & word){
     if (index <= -1)
         index = -(index + 1);
     copy_up(index);
-    buf[index] = word;
     size++;
+    buf[index] = word;
     return;
 }
 
@@ -47,7 +46,7 @@ bool SortedArrayList::find(const string& word) {
 void SortedArrayList::remove(const string& word) {
     int index = find_index(word);
     if (index < size && buf[index] == word) {
-        for (int i = index + 1; i < size; i++) {
+        for(int i = index + 1; i < size; i++){
             buf[i - 1] = buf[i];
         }
         size--;
@@ -73,22 +72,23 @@ SortedArrayList::~SortedArrayList(){
 }
 
 int SortedArrayList::find_index(const string& word) {
-    int left = 0;
-    int right = size - 1;
-    while (left <= right) {
-        int mid = (left + right)/2;
+    int first = 0;
+    int last = size - 1;
+    while (first <= last){
+        int mid = (first + last)/2;
         if (buf[mid] == word) 
         {
             return mid;
-        } else if (buf[mid] < word) 
+        } 
+        else if (buf[mid] < word) 
         {
-            left = mid + 1;
+            first = mid + 1;
         } else 
         {
-            right = mid - 1;
+            last = mid - 1;
         }
     }
-    return -(left+1);
+    return -(first+1);
 }
 
 SortedLinkedList::SortedLinkedList() : SortedList("Sorted Linked List"){
@@ -135,20 +135,18 @@ void ListNode::delete_list(ListNode * L){
 }
 
 void ListNode::remove(const string & word, ListNode *&L){
-    if (L->data == word) {
+    ListNode * prev = L;
+    ListNode * curr = L->next;
+    if (L->data == word){
         ListNode * temp = L;
         L = L->next;
         delete temp;
         return;
     }
-
-    ListNode * prev = L;
-    ListNode * curr = L->next;
     while (curr->data < word) {
         prev = curr;
         curr = curr->next;
     }
-
     if (curr->data == word) {
         prev->next = curr->next;
         delete curr;
