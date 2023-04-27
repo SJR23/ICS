@@ -40,7 +40,7 @@ void SortedArrayList::insert(const string & word){
 
 bool SortedArrayList::find(const string& word){
     int index = find_index(word);
-    return (buf[index] == word && index >= 0 && index < size);
+    return (index >= 0 && index < size && buf[index] == word);
 }
 
 void SortedArrayList::remove(const string& word){
