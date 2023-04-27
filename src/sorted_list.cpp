@@ -11,15 +11,13 @@ ostream & operator << (ostream & out, SortedList & L){
 }
 
 void SortedArrayList::copy_down(int hole){
-    for(int i = hole + 1; i < size; i++){
+    for(int i = hole + 1; i < size; i++)
         buf[i - 1] = buf[i];
-    }
 }
 
 void SortedArrayList::copy_up(int hole){
-    for(int i = size; i > hole; i--){
+    for(int i = size; i > hole; i--)
         buf[i] = buf[i - 1];
-    }
 }
 
 SortedArrayList::SortedArrayList(int cap) : SortedList("Sorted Array List"), capacity(cap), size(0){
