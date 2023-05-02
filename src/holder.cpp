@@ -95,7 +95,7 @@ LinkedStack::~LinkedStack(){
     ListNode::delete_list(head);
 }
 
-ArrayQueue::ArrayQueue(int cap) : Queue("Array Queue"), capacity(cap), front(0), rear(0), buf(new string[cap]){}
+ArrayQueue::ArrayQueue(int cap) : Queue("Array Queue"), capacity(cap+1), front(0), rear(0), buf(new string[cap+1]){}
 
 void ArrayQueue::enq(const string & word){
     if(!is_full()){
