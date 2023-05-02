@@ -126,7 +126,7 @@ void ArrayQueue::print(ostream & out){
     for(int i = front; i < rear; i = (i+1)%capacity){
         out << buf[i];
     }
-    out << endl;
+    //out << endl;
 }
 
 ArrayQueue::~ArrayQueue(){
