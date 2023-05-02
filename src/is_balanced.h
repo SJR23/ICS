@@ -3,7 +3,7 @@
 using namespace std;
 
 void error(string msg, char c){
-    cout << "ERROR: " << word << " " << msg << endl;
+    cout << "ERROR: " << msg << " " << c << endl;
 }
 bool is_balanced(string s){
     return true;
