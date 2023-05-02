@@ -1,6 +1,9 @@
+#include <string>
+#include <fstream>
 #include <iostream>
-using namespace std;
 #include "holder.h"
+#include "Timer.h"
+using namespace std;
 
 ArrayStack::ArrayStack(int cap) : Stack("Array Stack"), capacity(cap), size(0), buf(new string[cap]){}
 
@@ -12,7 +15,7 @@ void ArrayStack::push(const string & word){
 }
 
 void ArrayStack::pop(){
-    if(!is_empty){
+    if(!is_empty()){
         size--;
     }
 }
@@ -73,9 +76,7 @@ void LinkedStack::pop(){
 }
 
 string LinkedStack::top(){
-    if(!is_empty){
-        return head->data;
-    }
+    return head->data;
 }
 
 bool LinkedStack::is_empty(){
@@ -90,29 +91,27 @@ void LinkedStack::print(ostream & out){
     ListNode::print(out, head);
 }
 
-void LinkedStack::~LinkedStack(){
+LinkedStack::~LinkedStack(){
     ListNode::delete_list(head);
 }
 
 ArrayQueue::ArrayQueue(int cap) : Queue("Array Queue"), capacity(cap), front(0), rear(0), buf(new string[cap]){}
 
 void ArrayQueue::enq(const string & word){
-    if(!is_full){
+    if(!is_full()){
         buf[rear] = word;
         rear = (rear + 1) % capacity;
     }
 }
 
 void ArrayQueue::deq(){
-    if(!is_empty){
+    if(!is_empty()){
         front = (front + 1) % capacity;
     }
 }
 
 string ArrayQueue::next(){
-    if(!is_empty){
-        return buf[front];
-    }
+    return buf[front];
 }
 
 bool ArrayQueue::is_empty(){
@@ -148,7 +147,7 @@ void LinkedQueue::enq(const string & word){
 }
 
 void LinkedQueue::deq(){
-    if(!is_empty){
+    if(!is_empty()){
         ListNode * note = head;
         head = head->next;
         if(!head){
@@ -159,7 +158,7 @@ void LinkedQueue::deq(){
 }
 
 string LinkedQueue::next(){
-    if(!is_empty){
+    if(!is_empty()){
         return head->data;
     }
     return "";
@@ -175,6 +174,10 @@ bool LinkedQueue::is_full(){
 
 void LinkedQueue::print(ostream & out){
     ListNode::print(out, head);
+}
+
+LinkedQueue::~LinkedQueue() {
+    ListNode::delete_list(head);
 }
 
 void error(string word, string msg){
@@ -199,20 +202,6 @@ void insert_all_words(int k, string file_name, Holder & L){
     cout << "\t\tI = " << eTime << endl;
 }
 
-void find_all_words(int k, string file_name, Holder & L){
-    Timer t;
-    double eTime;
-    ifstream in(file_name);
-    int limit = k * NWORDS / 10;
-    t.start();
-    for (string word; (in >> word) && limit > 0 ; --limit )
-        L.find(word);
-    t.elapsedUserTime(eTime);
-    in.close();
-    cout << "\t\tF = " << eTime << endl;
-}
-
-
 void remove_all_words(int k, string file_name, Holder & L) {
     Timer t;
     double eTime;
@@ -220,23 +209,10 @@ void remove_all_words(int k, string file_name, Holder & L) {
     int limit = k * NWORDS / 10;
     t.start();
     for (string word; (in >> word) && limit > 0 ; --limit )
-        L.remove(word);
+        L.remove();
     t.elapsedUserTime(eTime);
     in.close();
     cout << "\t\tR = " << eTime << endl;
-}
-
-void measure_SortedList_methods(string file_name, Holder & L){
-    cout << L.name << endl;
-    for (int K=1 ; K <= 10 ; ++K)
-        {
-            cout << "K = " << K << endl;
-            insert_all_words(K, file_name, L);
-            find_all_words(K, file_name, L);
-            remove_all_words(K, file_name, L);
-            if ( !L.is_empty())
-                error(L.name , "is not empty");
-        }
 }
 
 void measure_holder(string file_name, Holder & L) {
