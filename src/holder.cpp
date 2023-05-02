@@ -50,7 +50,7 @@ void ListNode::print(ostream & out, ListNode * L){
         out << L->data << " ";
         L = L->next;
     }
-    //out << endl;
+    out << endl;
 }
 
 void ListNode::delete_list(ListNode * L){
