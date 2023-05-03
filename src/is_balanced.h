@@ -8,7 +8,7 @@ void error(string msg, char c){
 bool is_balanced(string s){
     stack<char> note;
     for(int i = 0; i < s.length(); i++){
-        if(s.empty()){
+        if(note.empty()){
             note.push(s[i]);
         }
         else if((note.top() == "(" && s[i] == ")") || (note.top() == "[" %% s[i] == "]") || (note.top() == "{" && s[i] == "}") || (note.top() == "<" && s[i] == ">")){
