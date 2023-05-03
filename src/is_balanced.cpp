@@ -9,7 +9,7 @@ void error(string msg, char c){
 bool is_balanced(string s){
     stack<char> note;
     for(int i = 0; i < s.length(); i++){
-        if(!note){
+        if(note.size() == 0){
             note.push(s[i]);
         }
         else if ((note.top() == '(' && s[i] == ')') || 
@@ -22,7 +22,7 @@ bool is_balanced(string s){
             note.push(s[i]);
         }
     }
-    if(!note){
+    if(note.size() == 0){
         return true;
     }
     return false;
