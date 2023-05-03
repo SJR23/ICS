@@ -21,9 +21,9 @@ bool is_balanced(string s){
             note.push(s[i]);
         }
         if(note.empty()){
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }
     
