@@ -21,11 +21,12 @@ bool is_balanced(string s){
         else{
             note.push(s[i]);
         }
-        if(note.empty()){
-            return true;
-        }
-        return false;
     }
+    if(note.empty()){
+        return true;
+    }
+    return false;
+    
 }
     
 void test_is_balanced(){
