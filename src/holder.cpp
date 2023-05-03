@@ -50,7 +50,6 @@ void ListNode::print(ostream & out, ListNode * L){
         out << L->data << " ";
         L = L->next;
     }
-    //out << endl;
 }
 
 void ListNode::delete_list(ListNode * L){
@@ -126,7 +125,6 @@ void ArrayQueue::print(ostream & out){
     for(int i = front; i != rear; i = (i+1)%capacity){
         out << buf[i] << " ";
     }
-    //out << endl;
 }
 
 ArrayQueue::~ArrayQueue(){
