@@ -27,4 +27,11 @@ bool is_balanced(string s){
     }
 }
     
-void test_is_balanced(){}
+void test_is_balanced(){
+    string test_cases[] = [ "({(())})((([({})])))(((((<>([{()}])(<>))))))()",
+                           "({(<>)})((([({})])))(((((()([{()}])(())))))", 
+                           "({(<>)})((([({})])))((((([]([{<>}])(()))))))()])"];
+    for(val = 0; test_cases.length(); val ++){
+        bool check = is_balanced(test_cases[val];
+        cout << check << endl;
+    }
