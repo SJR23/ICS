@@ -4,7 +4,7 @@ using namespace std;
 #include "is_balanced.h"
 
 void error(string msg, char c){
-    cout << "ERROR: " << msg << " " << c << endl;
+    cerr << "ERROR: " << msg << " " << c << endl;
 }
 bool is_balanced(string s){
     stack<char> note;
