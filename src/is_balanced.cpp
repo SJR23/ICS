@@ -12,10 +12,7 @@ bool is_balanced(string s){
         if(note.empty()){
             note.push(s[i]);
         }
-        else if ((note.top() == '(' && s[i] == ')') || 
-                (note.top() == '[' && s[i] == ']') || 
-                (note.top() == '{' && s[i] == '}') || 
-                (note.top() == '<' && s[i] == '>')){
+        else if(note.top() == s[i]){
             note.pop();
         }
         else{
@@ -26,7 +23,6 @@ bool is_balanced(string s){
         return true;
     }
     return false;
-    
 }
     
 void test_is_balanced(){

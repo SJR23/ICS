@@ -138,10 +138,10 @@ void LinkedQueue::enq(const string & word){
     if(tail){
         tail->next = note;
     }
-    tail = note;
     if(!head){
         head = note;
     }
+    tail = note;
 }
 
 void LinkedQueue::deq(){
@@ -193,35 +193,35 @@ void insert_all_words(int k, string file_name, Holder & L){
     ifstream in(file_name);
     int limit = k * NWORDS / 10;
     t.start();
-    for (string word; (in >> word) && limit > 0 ; --limit )
+    for (string word; (in >> word) && limit > 0; --limit)
         L.insert(word);
     t.elapsedUserTime(eTime);
     in.close();
     cout << "\t\tI = " << eTime << endl;
 }
 
-void remove_all_words(int k, string file_name, Holder & L) {
+void remove_all_words(int k, string file_name, Holder & L){
     Timer t;
     double eTime;
     ifstream in(file_name);
     int limit = k * NWORDS / 10;
     t.start();
-    for (string word; (in >> word) && limit > 0 ; --limit )
+    for(string word; (in >> word) && limit > 0; --limit)
         L.remove();
     t.elapsedUserTime(eTime);
     in.close();
     cout << "\t\tR = " << eTime << endl;
 }
 
-void measure_holder(string file_name, Holder & L) {
+void measure_holder(string file_name, Holder & L){
     cout << L.name << endl;
-    for (int K=1 ; K <= 10 ; ++K)
+    for(int K=1; K <= 10; ++K)
         {
             cout << "K = " << K << endl;
-            insert_all_words(K , file_name , L);
-            remove_all_words(K , file_name , L);
-            if ( !L.is_empty())
-                error(L.name , "is not empty");
+            insert_all_words(K, file_name, L);
+            remove_all_words(K, file_name, L);
+            if( !L.is_empty())
+                error(L.name, "is not empty");
         }
 }
 
