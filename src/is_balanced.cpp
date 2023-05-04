@@ -38,6 +38,7 @@ bool is_balanced(string s){
                 (note.top() == '{' && s[i] == '}') || 
                 (note.top() == '<' && s[i] == '>')){
             note.pop();
+            }
         }
         else{
             note.push(s[i]);
