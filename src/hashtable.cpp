@@ -75,7 +75,7 @@ void HashTable::insert(const string & word){
 
 bool HashTable::find(const string & word){
     size_t i = hasher.hash(word, capacity);
-    return ListNode::find(word, buf[i]);
+    return ListNode::find(word, buf[i]) != nullptr;
 }
 
 void HashTable::remove(const string & word){
