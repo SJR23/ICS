@@ -47,10 +47,10 @@ struct Stats {
     }
     
     double compute_mean(const vector<int> & v){
-        double sum = 0;
-        for(auto & n : v)
-            sum += n;
-        return sum/v.size();
+        double s = 0;
+        for(auto & i : v)
+            s += i;
+        return s/v.size();
     }
     
     double compute_stddev(const vector<int> & v){
