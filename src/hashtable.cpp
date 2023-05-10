@@ -93,7 +93,7 @@ bool HashTable::is_full(){
     for(size_t i = 0; i < capacity; ++i){
         if(!buf[i]){return false;}
     }
-    return true;
+    return false;
 }
 
 void HashTable::print(ostream & out){
