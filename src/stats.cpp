@@ -14,5 +14,4 @@ Stats::Stats(string name, const vector<int> & chain_lengths) : name(name){
     span = max - min;
     mean = compute_mean(chain_lengths);
     stddev = compute_stddev(chain_lengths);
-    }
 }
