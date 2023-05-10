@@ -9,7 +9,7 @@ using namespace std;
 
 ListNode * ListNode::find(string key, ListNode * L){
     ListNode * note = L
-    while(note && note->data != key){
+    while(note !=nullptr && note->data != key){
         note = note->next;
     }
     return note;
