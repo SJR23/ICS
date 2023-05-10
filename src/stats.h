@@ -64,7 +64,11 @@ struct Stats {
         double var = ss/v.size() - m*m;
         return sqrt(var);
     }
-        
+    
+    int compute_span(int max, int min){
+        return max - min;
+    }
+    
     void print(ostream & out)
     {
         cout << name << endl;
