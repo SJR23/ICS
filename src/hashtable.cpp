@@ -107,7 +107,10 @@ void HashTable::print(ostream & out){
 size_t HashTable::number_of_entries(){
     size_t n = 0;
     for(size_t i = 0; i < capacity; ++i){
-        n += ListNode::length(buf[i]);
+        while(L){
+            ++n;
+            L = L->next;
+        }
     }
     return n;
 }
@@ -166,7 +169,7 @@ void remove_all_words(string file_name, HashTable & L) {
     t.start();
     for (string word; (in >> word) && limit > 0 ; --limit ) {
         L.remove(word);
-    }
+    }https://www.gradescope.com/courses/528818/assignments/2795344/submissions/180031297#HashTable_MultHasher.Find_All_Words
     t.elapsedUserTime(eTime);
     in.close();
     cout << "\t\tR = " << eTime << endl;
