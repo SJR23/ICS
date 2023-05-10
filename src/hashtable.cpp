@@ -61,7 +61,7 @@ int ListNode::length(ListNode * L){
 
 void ListNode::delete_list(ListNode * L){
     ListNode * one = L;
-    while(L){
+    while(one){
         ListNode * note = one->next;
         delete one;
         one = note;
