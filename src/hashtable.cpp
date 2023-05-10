@@ -8,10 +8,11 @@
 using namespace std;
 
 ListNode * ListNode::find(string key, ListNode * L){
-    while(L && L->data != key){
-        L = L->next;
+    ListNode * note = L
+    while(note && note->data != key){
+        note = note->next;
     }
-    return L;
+    return note;
 }
 
 ListNode * ListNode::insert(string key, ListNode * L){
@@ -43,9 +44,10 @@ void ListNode::print(ostream & out, ListNode * L){
 
 int ListNode::length(ListNode * L){
     int len = 0;
-    while(L){
+    ListNode * note = L;
+    while(note){
         len++;
-        L = L->next;
+        note = note->next;
     }
     return len;
 }
