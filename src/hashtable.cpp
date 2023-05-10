@@ -107,6 +107,7 @@ void HashTable::print(ostream & out){
 size_t HashTable::number_of_entries(){
     size_t n = 0;
     for(size_t i = 0; i < capacity; ++i){
+        ListNode * L = buf[i];
         while(L){
             ++n;
             L = L->next;
