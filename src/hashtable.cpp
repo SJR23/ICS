@@ -25,9 +25,8 @@ ListNode * ListNode::remove(string key, ListNode * L){
     ListNode * two = L;
     if(!L){return nullptr;}
     if(L->data == key){
-        ListNode * three = L;
         L = L->next;
-        delete three;
+        delete two;
         return L;
     }
     
@@ -75,7 +74,7 @@ void HashTable::insert(const string & word){
 
 bool HashTable::find(const string & word){
     size_t i = hasher.hash(word, capacity);
-    return ListNode::find(word, buf[i]) != nullptr;
+    return ListNode::find(word, buf[i]);
 }
 
 void HashTable::remove(const string & word){
@@ -91,11 +90,10 @@ bool HashTable::is_empty(){
 }
 
 bool HashTable::is_full(){
-    size_t note = 0;
     for(size_t i = 0; i < capacity; ++i){
-        note += ListNode::length(buf[i]);
+        if(!buf[i]){return false;}
     }
-    return note >= capacity;
+    return true;
 }
 
 void HashTable::print(ostream & out){
