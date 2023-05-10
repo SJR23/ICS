@@ -65,9 +65,6 @@ struct Stats {
         return sqrt(var);
     }
     
-    int compute_span(int max, int min){
-        return max - min;
-    }
     
     void print(ostream & out)
     {
