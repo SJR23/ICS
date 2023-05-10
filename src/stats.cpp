@@ -9,7 +9,7 @@ Stats::Stats(string name, const vector<int> & chain_lengths) : name(name){
     entries = chain_lengths.size();
     chains = 0;
     for(int i : chain_lengths){
-        if(len>=1){chains++;}
+        if(len>0){chains++;}
     }
     load_factor = static_cast<double>(entries)/chains;
     min = compute_min(chain_lengths);
