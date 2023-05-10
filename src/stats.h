@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <cmath>
 #include "hashtable.h"
 
 using namespace std;
@@ -31,7 +32,39 @@ struct Stats {
                 out << "len(" << len << ") = " << freq << endl;
         }
     }
-
+    
+    int compute_min(const vector<int> & v){
+        return *min_element(v.begin(), v.end());
+    }
+    
+    int compute_max(const vector<int> & v){
+        int val = v[0];
+        for(auto n : v){
+            if(n > val)
+                val = n;
+        }
+        return val;
+    }
+    
+    double compute_mean(const vector<int> & v){
+        double sum = 0;
+        for(auto & n : v)
+            sum += n;
+        return sum/v.size();
+    }
+    
+    double compute_stddev(const vector<int> & v){
+        double s = 0;
+        double ss = 0;
+        for(int i : v){
+            s += i;
+            ss += i * i;
+        }
+        double m = s / v.size();
+        double var = ss/v.size() - m*m;
+        return sqrt(var);
+    }
+        
     void print(ostream & out)
     {
         cout << name << endl;

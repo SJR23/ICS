@@ -13,6 +13,25 @@ struct Hasher
     virtual size_t hash(string key, int N) const = 0;
 };
 
+struct MyHasher
+    : public Hasher
+{
+    MyHasher()
+        : Hasher("MyHasher")
+    {
+    }
+    size_t hash(string key, int N) const
+    {
+        size_t result = 0;
+        int len = key.length();
+        for(int i = 0; i < len; i++){
+            char c = key[i];
+            result = (result * 31 + static_cast<size_t>(c)) % N;
+        }
+        return result;
+    }
+};
+
 struct MultHasher
     : public Hasher
 {
