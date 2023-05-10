@@ -17,15 +17,15 @@ ListNode * ListNode::find(string key, ListNode * L){
 ListNode * ListNode::insert(string key, ListNode * L){
     ListNode * note = new ListNode(key, L);
     note->next = L;
-    return L;
+    return note;
 }
 
 ListNode * ListNode::remove(string key, ListNode * L){
     ListNode * one = nullptr;
     ListNode * two = L;
-    ListNode * three = L;
     if(!L){return nullptr;}
     if(L->data == key){
+        ListNode * three = L;
         L = L->next;
         delete three;
         return L;
