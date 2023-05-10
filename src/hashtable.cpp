@@ -15,10 +15,8 @@ ListNode * ListNode::find(string key, ListNode * L){
 }
 
 ListNode * ListNode::insert(string key, ListNode * L){
-    if(!find(key, L)){
-        ListNode * note = new ListNode(key, L);
-        return note;
-    }
+    ListNode * note = new ListNode(key, L);
+    note->next = L;
     return L;
 }
 
