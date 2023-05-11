@@ -140,7 +140,7 @@ void insert_all_words(string file_name, HashTable & L){
     ifstream in(file_name);
     int limit = NWORDS;
     t.start();
-    for (string word; (in >> word) && limit > 0 ; --limit )
+    for(string word; (in >> word) && limit > 0 ; --limit )
         L.insert(word);
     t.elapsedUserTime(eTime);
     in.close();
@@ -153,7 +153,7 @@ void find_all_words(string file_name, HashTable & L){
     ifstream in(file_name);
     int limit = NWORDS;
     t.start();
-    for (string word; (in >> word) && limit > 0 ; --limit )
+    for(string word; (in >> word) && limit > 0 ; --limit )
         L.find(word);
     t.elapsedUserTime(eTime);
     in.close();
@@ -166,7 +166,7 @@ void remove_all_words(string file_name, HashTable & L) {
     ifstream in(file_name);
     int limit = NWORDS;
     t.start();
-    for (string word; (in >> word) && limit > 0 ; --limit ) {
+    for(string word; (in >> word) && limit > 0 ; --limit ) {
         L.remove(word);
     }https://www.gradescope.com/courses/528818/assignments/2795344/submissions/180031297#HashTable_MultHasher.Find_All_Words
     t.elapsedUserTime(eTime);
@@ -183,7 +183,7 @@ void measure_hashtable(string file_name, HashTable & L){
     stats.print(cout);
     find_all_words(file_name,L);
     remove_all_words(file_name,L);
-    if ( !L.is_empty())
+    if(!L.is_empty())
         error(L.get_name() , "is not empty");
 }
 
@@ -196,8 +196,8 @@ void measure_hashtables(string input_file) {
     int S[] = {
         100
     };
-    for (auto size : S){
-        for (auto h : H)
+    for(auto size : S){
+        for(auto h : H)
         {
             HashTable ht(*h, size);
             measure_hashtable(input_file, ht);

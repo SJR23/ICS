@@ -33,27 +33,27 @@ struct Stats {
         }
     }
     
-    int compute_min(const vector<int> & v){
+    int calc_min(const vector<int> & v){
         return *min_element(v.begin(), v.end());
     }
     
-    int compute_max(const vector<int> & v){
+    int calc_max(const vector<int> & v){
         int val = v[0];
-        for(auto n : v){
-            if(n > val)
-                val = n;
+        for(auto i : v){
+            if(i > val)
+                val = i;
         }
         return val;
     }
     
-    double compute_mean(const vector<int> & v){
+    double calc_mean(const vector<int> & v){
         double s = 0;
         for(auto & i : v)
             s += i;
         return s/v.size();
     }
     
-    double compute_stddev(const vector<int> & v){
+    double calc_stddev(const vector<int> & v){
         double s = 0;
         double ss = 0;
         for(int i : v){
