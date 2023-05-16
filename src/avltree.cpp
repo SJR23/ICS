@@ -97,7 +97,7 @@ Node * AVLTree::delete_node(Node * t, string key){
         Node * l = t->left;
         Node * r = t->right;
         delete t;
-        if(!t->left && !t->right){
+        if(!l && !r){
             return nullptr;
         }
         else if(!l){
@@ -111,8 +111,8 @@ Node * AVLTree::delete_node(Node * t, string key){
             while(note->left){
                 note = note->left;
             }
-            t = note;
-            r = delete_node(r,note->key);
+            t->key = note->key;
+            t->right = delete_node(t->right,note->key);
         }
     }       
     return rebalance(t);
