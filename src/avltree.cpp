@@ -97,14 +97,16 @@ Node * AVLTree::delete_node(Node * t, string key){
     else{
         Node * l = t->left;
         Node * r = t->right;
-        delete t;
         if(!l && !r){
+            delete t;
             return nullptr;
         }
         else if(!l){
+            delete t;
             return r;
         }
         else if(!r){
+            delete t;
             return l;
         }
         else{
@@ -113,7 +115,7 @@ Node * AVLTree::delete_node(Node * t, string key){
                 note = note->left;
             }
             t->key = note->key;
-            t->right = delete_node(note,note->key);
+            t->right = delete_node(t->right,note->key);
         }
     }
     //set_height(t);
