@@ -41,7 +41,7 @@ Node * AVLTree::left_rotate(Node * x){
 }
 
 Node * AVLTree::rebalance(Node * t){
-    //set_height(t);
+    set_height(t);
     int b = get_balance(t);
     if(b > 1){
         if(get_balance(t->left) < 0){
@@ -142,6 +142,7 @@ bool AVLTree::is_empty() const{
 }
 
 int AVLTree::get_height() const{
+    if(!root){return 0;}
     return get_height(root);
 }
 
