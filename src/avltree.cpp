@@ -4,12 +4,12 @@
 #include <iostream>
 using namespace std;
 
-int AVLTree::get_height(Node *node){
-    if(!node){return 1;}
+int AVLTree::get_height(Node * node){
+    if(!node){return 0;}
     return node->height;
 }
 
-int AVLTree::get_balance(Node *node){
+int AVLTree::get_balance(Node * node){
     if(!node){return 0;}
     return get_height(node->left) - get_height(node->right);
 }
@@ -17,7 +17,7 @@ int AVLTree::get_balance(Node *node){
 void AVLTree::set_height(Node *node){
     //int l = get_height(node->left);
     //int r = get_height(node->right);
-    node->height = max(get_height(node->right), get_height(node->left));
+    node->height = 1 + max(get_height(node->left), get_height(node->right));
 }
 
 Node * AVLTree::right_rotate(Node * y){

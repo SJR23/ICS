@@ -97,4 +97,6 @@ void measure_BST(string file_name, BST & L){
 void measure_BSTs(string input_file){
     BSTree bst;
     measure_BST(input_file, bst);
+    AVLTree avt;
+    measure_BST(input_file, avt);
 }
