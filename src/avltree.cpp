@@ -17,7 +17,7 @@ int AVLTree::get_balance(Node * node){
 void AVLTree::set_height(Node *node){
     //int l = get_height(node->left);
     //int r = get_height(node->right);
-    return node->height = 1 + max(get_height(node->left), get_height(node->right));
+    node->height = 1 + max(get_height(node->left), get_height(node->right));
 }
 
 Node * AVLTree::right_rotate(Node * y){
@@ -41,7 +41,7 @@ Node * AVLTree::left_rotate(Node * x){
 }
 
 Node * AVLTree::rebalance(Node * t){
-    set_height(t);
+    //set_height(t);
     int b = get_balance(t);
     if(b > 1){
         if(get_balance(t->left) < 0){
@@ -115,6 +115,7 @@ Node * AVLTree::delete_node(Node * t, string key){
             t->right = delete_node(t->right,note->key);
         }
     }
+    set_height(t);
     return rebalance(t);
 }
 
