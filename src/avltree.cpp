@@ -5,7 +5,7 @@
 using namespace std;
 
 int AVLTree::get_height(Node *node){
-    if(!node){return 0;}
+    if(!node){return -1;}
     return node->height;
 }
 
@@ -71,6 +71,7 @@ Node * AVLTree::insert_node(Node * t, string key){
         t->right = insert_node(t->right, key);
     }
     else{return t;}
+    set_height(t);
     return rebalance(t);
 }
 
@@ -126,7 +127,8 @@ void AVLTree::insert(const string & key){
 }
 
 bool AVLTree::find(const string & key) const{
-    return find_node(root, key);
+    Node * note = find_node(root, key);
+    return note;
 }
 
 void AVLTree::remove(const string & key){
