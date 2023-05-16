@@ -41,6 +41,7 @@ Node * AVLTree::left_rotate(Node * x){
 }
 
 Node * AVLTree::rebalance(Node * t){
+    if(!t){return nullptr;}
     set_height(t);
     int b = get_balance(t);
     if(b > 1){
