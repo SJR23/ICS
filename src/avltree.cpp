@@ -6,7 +6,7 @@ using namespace std;
 
 int AVLTree::get_height(Node *node){
     if(!node){return 0;}
-    return 1 + node->height;
+    return node->height;
 }
 
 int AVLTree::get_balance(Node *node){
