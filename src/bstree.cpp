@@ -24,7 +24,6 @@ Node * BSTree::find_node(Node * t, string key){
 }
 
 Node * BSTree::left_most(Node * t){
-    if(!t){return nullptr;}
     while(t->left){
         t = t->left;
     }

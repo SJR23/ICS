@@ -41,7 +41,6 @@ Node * AVLTree::left_rotate(Node * x){
 }
 
 Node * AVLTree::rebalance(Node * t){
-    if(!t){return nullptr;}
     //set_height(t);
     int b = get_balance(t);
     if(b > 1){
@@ -72,7 +71,7 @@ Node * AVLTree::insert_node(Node * t, string key){
     else if(key > t->key){
         t->right = insert_node(t->right, key);
     }
-    else{return t;}
+    set_height(t);
     return rebalance(t);
 }
 
@@ -88,7 +87,7 @@ Node * AVLTree::find_node(Node * t, string key){
 }
 
 Node * AVLTree::delete_node(Node * t, string key){
-    if(!t){return nullptr;}
+    if(!t){return t;}
     if(key < t->key){
         t->left = delete_node(t->left, key);
     }
