@@ -114,7 +114,7 @@ Node * AVLTree::delete_node(Node * t, string key){
                 note = note->left;
             }
             t->key = note->key;
-            t->right = delete_node(t->right,note->key);
+            t->right = delete_node(note,note->key);
         }
     }
     set_height(t);
