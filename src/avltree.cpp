@@ -5,7 +5,7 @@
 using namespace std;
 
 int AVLTree::get_height(Node *node){
-    if(!node){return -1;}
+    if(!node){return 0;}
     return node->height;
 }
 
