@@ -2,6 +2,7 @@
 #define AVLTREE_H
 
 #include "bst.h"
+#include "bstree.h"
 
 class AVLTree
     : public BST
