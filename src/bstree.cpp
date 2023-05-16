@@ -87,7 +87,7 @@ void BSTree::remove(const string & key){
 }
 
 bool BSTree::is_empty() const{
-    return root;
+    return !root;
 }
 
 int BSTree::get_height() const{
