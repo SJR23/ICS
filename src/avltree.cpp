@@ -56,7 +56,7 @@ Node * AVLTree::rebalance(Node * t){
         return left_rotate(t);
     }
     else{
-        set_height(t);
+        //set_height(t);
         return t;
     }
 }
@@ -71,8 +71,6 @@ Node * AVLTree::insert_node(Node * t, string key){
     else if(key > t->key){
         t->right = insert_node(t->right, key);
     }
-    //set_height(t);
-    t->value = new Node(key);
     return rebalance(t);
 }
 
