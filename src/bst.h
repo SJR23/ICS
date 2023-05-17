@@ -45,9 +45,9 @@ struct BST
 
     void print(ostream & out) const
     {
-        // pre_order_print(out, root);
+        pre_order_print(out, root);
         in_order_print(out, root);
-        // post_order_print(out, root);
+        post_order_print(out, root);
     }
 
     virtual ~BST(); // must delete any Nodes in the tree pointed to by root
