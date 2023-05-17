@@ -148,7 +148,7 @@ int AVLTree::get_height() const{
     return get_height(root);
 }
 
-/*AVLTree::~AVLTree(){
-    delete_node(root, root->key);
-}*/
+AVLTree::~AVLTree(){
+    //delete_node(root, root->key);
+}
 
