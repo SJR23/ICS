@@ -6,6 +6,7 @@ using namespace std;
 
 int AVLTree::get_height(Node * node){
     if(!node){return 0;}
+    
     return node->height;
 }
 
@@ -41,7 +42,7 @@ Node * AVLTree::left_rotate(Node * x){
 }
 
 Node * AVLTree::rebalance(Node * t){
-    //set_height(t);
+    set_height(t);
     int b = get_balance(t);
     if(b > 1){
         if(get_balance(t->left) < 0){
@@ -56,7 +57,7 @@ Node * AVLTree::rebalance(Node * t){
         return left_rotate(t);
     }
     else{
-        set_height(t);
+        //set_height(t);
         return t;
     }
 }
@@ -73,7 +74,7 @@ Node * AVLTree::insert_node(Node * t, string key){
         t->right = insert_node(t->right, key);
         //set_height(t);
     }
-    set_height(t);
+    //set_height(t);
     return rebalance(t);
 }
 
