@@ -126,7 +126,6 @@ Node * AVLTree::delete_node(Node * t, string key){
 AVLTree::AVLTree() : BST("AVLTree"){}
 
 void AVLTree::insert(const string & key){
-    if(!find(key)){return;}
     root = insert_node(root, key);
     count++;
 }
