@@ -27,7 +27,7 @@ Node * AVLTree::right_rotate(Node * y){
     y->left = b;
     set_height(x);
     set_height(y);
-    return x;
+    return y;
 }
 
 Node * AVLTree::left_rotate(Node * x){
@@ -37,7 +37,7 @@ Node * AVLTree::left_rotate(Node * x){
     x->right = b;
     set_height(y);
     set_height(x);
-    return y;
+    return x;
 }
 
 Node * AVLTree::rebalance(Node * t){
