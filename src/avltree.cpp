@@ -72,7 +72,7 @@ Node * AVLTree::insert_node(Node * t, string key){
         t->right = insert_node(t->right, key);
     }
     //set_height(t);
-    t->value = key;
+    t->value = new Node(key);
     return rebalance(t);
 }
 
