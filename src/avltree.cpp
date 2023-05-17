@@ -21,23 +21,23 @@ void AVLTree::set_height(Node *node){
 }
 
 Node * AVLTree::right_rotate(Node * y){
-    Node * a = y->left;
-    Node * b = a->right;
-    a->right = y;
+    Node * x = y->left;
+    Node * b = x->right;
+    x->right = y;
     y->left = b;
     set_height(y);
-    set_height(a);
-    return a;
+    set_height(x);
+    return x;
 }
 
 Node * AVLTree::left_rotate(Node * x){
-    Node * a = x->right;
-    Node * b = a->left;
-    a->left = x;
+    Node * y = x->right;
+    Node * b = y->left;
+    y->left = x;
     x->right = b;
     set_height(x);
-    set_height(a);
-    return a;
+    set_height(y);
+    return y;
 }
 
 Node * AVLTree::rebalance(Node * t){
@@ -71,6 +71,7 @@ Node * AVLTree::insert_node(Node * t, string key){
     else if(key > t->key){
         t->right = insert_node(t->right, key);
     }
+    set_height(t);
     return rebalance(t);
 }
 
