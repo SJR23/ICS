@@ -39,6 +39,7 @@ Node * BSTree::delete_node(Node * t, string key){
         t->right = delete_node(t->right, key);
     }
     else{
+        //change this sachi!!!
         if(!t->left && !t->right){
             delete t;
             return nullptr;
