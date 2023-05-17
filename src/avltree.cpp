@@ -23,22 +23,22 @@ void AVLTree::set_height(Node *node){
 Node * AVLTree::right_rotate(Node * y){
     Node * x = y->left;
     Node * b = x->right;
-    y->left = b;
     x->right = y;
-    
-    set_height(y);
+    y->left = b;
     set_height(x);
+    set_height(y);
+    
     return x;
 }
 
 Node * AVLTree::left_rotate(Node * x){
     Node * y = x->right;
     Node * b = y->left;
-    x->right = b;
     y->left = x;
-    
-    set_height(x);
+    x->right = b;
     set_height(y);
+    set_height(x);
+    
     return y;
 }
 
