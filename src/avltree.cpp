@@ -67,13 +67,14 @@ Node * AVLTree::insert_node(Node * t, string key){
     }
     if(key < t->key){
         t->left = insert_node(t->left, key);
-        return rebalance(t);
     }
     else if(key > t->key){
         t->right = insert_node(t->right, key);
-        return rebalance(t);
     }
-    return t;
+    else{
+        return t;
+    }
+    return rebalance(t);
 }
 
 Node * AVLTree::find_node(Node * t, string key){
@@ -126,6 +127,7 @@ Node * AVLTree::delete_node(Node * t, string key){
 AVLTree::AVLTree() : BST("AVLTree"){}
 
 void AVLTree::insert(const string & key){
+    if(!find(key)){return;}
     root = insert_node(root, key);
     count++;
 }
