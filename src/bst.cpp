@@ -31,10 +31,15 @@ void BST::post_order_print(ostream & out, Node * t){
     }
 }
 
+void delete_t(Node * t){
+    if(!t){return;}
+    delete_t(t->left);
+    delete_t(t->right);
+    delete t;
+}
+
 BST::~BST(){
-    //while(root){
-      //  remove(root, root->key);
-    //}
+    delete_t(root);
 }
 
 ostream & operator << (ostream & out, BST & L){
@@ -95,8 +100,8 @@ void measure_BST(string file_name, BST & L){
 }
 
 void measure_BSTs(string input_file){
-    AVLTree avt;
-    measure_BST(input_file, avt);
-    BSTree bst;
-    measure_BST(input_file, bst);
+    AVLTree avtree;
+    measure_BST(input_file, avtree);
+    BSTree bstree;
+    measure_BST(input_file, bstree);
 }

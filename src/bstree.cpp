@@ -38,20 +38,19 @@ Node * BSTree::delete_node(Node * t, string key){
         t->right = delete_node(t->right, key);
     }
     else{
-        //change this sachi!!!
-        if(!t->left && !t->right){
+        Node * note_left = t->left;
+        Node * note_right = t->right;
+        if(!note_left && !note_right){
             delete t;
             return nullptr;
         }
-        else if(!t->left){
-            Node * note = t->right;
+        else if(!note_left){;
             delete t;
-            return note;
+            return note_right;
         }
-        else if(!t->right){
-            Node * note = t->left;
+        else if(!note_right){
             delete t;
-            return note;
+            return note_left;
         }
         else{
             Node * note = left_most(t->right);
