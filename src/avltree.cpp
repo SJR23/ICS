@@ -36,8 +36,8 @@ Node * AVLTree::left_rotate(Node * x){
     Node * b = y->left;
     y->left = x;
     x->right = b;
-    set_height(x);
     set_height(y);
+    set_height(x);
     return y;
 }
 
@@ -97,22 +97,22 @@ Node * AVLTree::delete_node(Node * t, string key){
         t->right = delete_node(t->right, key);
     }
     else{
-        Node * l = t->left;
-        Node * r = t->right;
-        if(!l && !r){
+        Node * note_left = t->left;
+        Node * note_right = t->right;
+        if(!note_left && !note_right){
             delete t;
             return nullptr;
         }
-        else if(!l){
+        else if(!note_left){
             delete t;
-            return r;
+            return note_right;
         }
-        else if(!r){
+        else if(!note_right){
             delete t;
-            return l;
+            return note_left;
         }
         else{
-            Node * note = r;
+            Node * note = note_right;
             while(note->left){
                 note = note->left;
             }
