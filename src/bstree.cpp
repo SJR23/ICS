@@ -1,5 +1,4 @@
 #include "bstree.h"
-#include "timer.h"
 #include <iostream>
 using namespace std;
 

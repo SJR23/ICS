@@ -1,6 +1,4 @@
 #include "avltree.h"
-#include "bst.h"
-#include "bstree.h"
 #include <iostream>
 using namespace std;
 
