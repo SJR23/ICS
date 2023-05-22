@@ -31,7 +31,6 @@ void Sorter::print(ostream & out){
     for(const string & word : vec){
         out << word << " ";
     }
-    out << endl;
 }
 
 bool Sorter::verify_sorted(){
@@ -194,13 +193,13 @@ void error(string word, string msg){
 
 void measure_sorters(string input_file){
     vector<Sorter*> sorters{
-        new InsertionSorter(),
-        new QuickSorter(),
-        new HeapSorter(),
-        new IntroSorter(),
-        new STLSorter(),
-        new StableSorter(),
-        new ShellSorter()
+        new InsertionSorter()
+        //new QuickSorter(),
+        //new HeapSorter(),
+        //new IntroSorter(),
+        //new STLSorter(),
+        //new StableSorter(),
+        //new ShellSorter()
     };
     for(Sorter* sorter : sorters){
         measure_partitions(input_file, *sorter);
@@ -210,6 +209,7 @@ void measure_sorters(string input_file){
 
 void measure_partitions(string file_name, Sorter & L){
     cout << L.name << endl;
+    cout << file_name << endl;
     for(int k = 1; k <= 10; ++k){
         cout << "\tK = " << k << " ";
         measure_partition(k, file_name, L);
