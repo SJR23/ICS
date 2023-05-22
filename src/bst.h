@@ -19,7 +19,6 @@ struct Node
           left(new_left), right(new_right),
           height(1)
     { }
-
 };
 
 struct BST
