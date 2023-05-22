@@ -43,11 +43,11 @@ bool Sorter::verify_sorted(){
 }
 
 void InsertionSorter::insertionsort(vector<string> & vec, int low, int high){
-    for(int i = low+1; i <= high; i++){
+    for(int i = low+1; i < high; ++i){
         string note = vec[i];
         int j = i-1;
-        while(j >= low && vec[j] > note){
-            vec[i] = vec[j];
+        while(j >= 0 && vec[j] > note){
+            vec[j+1] = vec[j];
             --j;
         }
         vec[j+1] = note;
@@ -55,7 +55,7 @@ void InsertionSorter::insertionsort(vector<string> & vec, int low, int high){
 }
 
 void InsertionSorter::sort(){
-    insertionsort(vec, 0, vec.size()-1);
+    insertionsort(vec, 0, vec.size());
 }
 
 string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
