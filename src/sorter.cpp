@@ -34,7 +34,7 @@ void Sorter::print(ostream & out){
 }
 
 bool Sorter::verify_sorted(){
-    for(int i = 0; i < vec.size()-1; i++){
+    for(int i = 0; i < vec.size()-1; ++i){
         if(vec[i] > vec[i+1]){
             return false;
         }
@@ -46,9 +46,9 @@ void InsertionSorter::insertionsort(vector<string> & vec, int low, int high){
     for(int i = low; i<high; i++){
         string note = vec[i];
         int j = i-1;
-        while(j > low && vec[j] > note){
+        while(j >= low && vec[j] > note){
             vec[j+1] = vec[j];
-            j--;
+            --j;
         }
         vec[j+1] = note;
     }
