@@ -96,7 +96,7 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
     if ( high - low < 11 )     // constexpr int K = 11;
-       insertionsort( vec, low, high );
+        InsertionSorter::insertionsort( vec, low, high );
     else
     {
         //string pivot = median_of_three( vec, low, high );
