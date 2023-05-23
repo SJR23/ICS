@@ -81,7 +81,7 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
         }
     }
     swap(vec[i],vec[low]);
-    return low;
+    return high;
 }
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
