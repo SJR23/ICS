@@ -151,7 +151,7 @@ void IntroSorter::introsort(vector<string>& vec, int low, int high) {
 }
 
 void IntroSorter::sort() {
-    introsort(vec, 0, vec.size());
+    introsort(vec, 0, vec.size()-1);
 }
 
 void STLSorter::sort(){
