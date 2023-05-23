@@ -71,16 +71,15 @@ string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
 
 int QuickSorter::partition(vector<string> & vec, int low, int high){
     string piv = select_pivot(vec, low, high);
-    int l = low;
-    int i = high;
-    while(true){
+    int l = low, i = high - 1;
+    for(;;){
         while(vec[l] < piv){++l;}
         while(piv < vec[i]){--i;}
         if(l < i){
-            swap(vec[l++],vec[i--]);
+            swap(vec[l],vec[i]);
         }else{break;}
     }
-    swap(vec[i],vec[low]);
+    swap(vec[l],vec[high]);
     return l;
 }
 
