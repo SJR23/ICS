@@ -45,12 +45,12 @@ bool Sorter::verify_sorted(){
 void InsertionSorter::insertionsort(vector<string> & vec, int low, int high){
     for(int i = low + 1; i < high; i++){
         string note = vec[i];
-        int j = i;
-        while(j > low && vec[j-1] > note){
-            vec[j] = vec[j-1];
+        int j = i - 1;
+        while(j >= low && vec[j] > note){
+            vec[j+1] = vec[j];
             j = j - 1;
         }
-        vec[j] = note;
+        vec[j+1] = note;
     }
 }
 
@@ -59,25 +59,27 @@ void InsertionSorter::sort(){
 }
 
 string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
-    int mid = (low + high)/2;
-    return vec[mid];
+    //int mid = (low + high)/2;
+    return vec[high];
 }
 
 int QuickSorter::partition(vector<string> & vec, int low, int high){
     string piv = select_pivot(vec, low, high);
-    int i = low - 1;
-    for(int k = low; k < high; k++){
-        if(vec[k] < piv){
-            ++i;
-            swap(vec[i], vec[k]);
-        }
+    int l = low;
+    int i = high - 1;
+    for(;;){
+        while(vec[below] < piv){++l;}
+        while(piv < vec[i]){--i;}
+        if(l < i){
+            swap(vec[l++],vec[i--]);
+        }else{break;}
     }
-    swap(vec[i+1], vec[high]);
-    return i+1;
+    swap(vec[i],vec[high]);
+    return l;
 }
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
-    if(high < low){
+    if(low < high){
         int index = partition(vec, low, high);
         quicksort(vec, low, index-1);
         quicksort(vec,index+1, high);
