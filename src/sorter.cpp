@@ -101,8 +101,10 @@ void QuickSorter::quicksort(vector<string> & vec, int low, int high){
     {
         //string pivot = median_of_three( vec, low, high );
         int i = partition( vec, low, high);
-        quicksort( vec, low, i - 1 );
-        quicksort( vec, i + 1, high );
+        if(low<i-1)
+            quicksort( vec, low, i - 1 );
+        if(i+1 < high)
+            quicksort( vec, i + 1, high );
     }
 }
 
