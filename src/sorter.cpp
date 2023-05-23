@@ -131,7 +131,7 @@ void HeapSorter::sort(){
 
 void introsort_util(vector<string>& arr, int low, int high, int depth_limit) {
     if (high - low < 11) {
-        InsertionSorter::insertion_sort(arr, low, high);
+        InsertionSorter::insertionsort(arr, low, high);
         return;
     }
     if (depth_limit == 0) {
