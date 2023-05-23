@@ -59,7 +59,13 @@ void InsertionSorter::sort(){
 }
 
 string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
-    //int mid = (low + high)/2;
+    int mid = (low + high)/2;
+    if(vec[mid] < vec[low]){
+        swap(vec[low], vec[mid]);}
+    if(vec[high] < vec[low]){
+        swap(vec[low], vec[high]);}
+    if(vec[mid] < vec[high]){
+        swap(vec[mid], vec[high]);}
     return vec[high];
 }
 
