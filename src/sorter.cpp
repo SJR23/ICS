@@ -66,7 +66,7 @@ string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
         swap(vec[low], vec[high]);}
     if(vec[mid] < vec[high]){
         swap(vec[mid], vec[high]);}
-    return vec[high];
+    return vec[mid];
 }
 
 int QuickSorter::partition(vector<string> & vec, int low, int high){
