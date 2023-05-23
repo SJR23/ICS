@@ -55,7 +55,7 @@ void InsertionSorter::insertionsort(vector<string> & vec, int low, int high){
 }
 
 void InsertionSorter::sort(){
-    insertionsort(vec, 0, vec.size());
+    insertionsort(vec, 0, vec.size()-1);
 }
 
 string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
@@ -200,13 +200,13 @@ void error(string word, string msg){
 
 void measure_sorters(string input_file){
     vector<Sorter*> sorters{
-        new InsertionSorter()
-        //new QuickSorter(),
-        //new HeapSorter(),
-        //new IntroSorter(),
-        //new STLSorter(),
-        //new StableSorter(),
-        //new ShellSorter()
+        new InsertionSorter(),
+        new QuickSorter(),
+        new HeapSorter(),
+        new IntroSorter(),
+        new STLSorter(),
+        new StableSorter(),
+        new ShellSorter()
     };
     for(Sorter* sorter : sorters){
         measure_partitions(input_file, *sorter);
