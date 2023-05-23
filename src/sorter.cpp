@@ -45,7 +45,7 @@ bool Sorter::verify_sorted(){
 void InsertionSorter::insertionsort(vector<string> & vec, int low, int high){
     int j;
     string note;
-    for(int i = 0; i < high; i++){
+    for(int i = low; i < high; i++){
         j = i;
         int j = i - 1;
         while(j > low && vec[j] < vec[j-1]){
