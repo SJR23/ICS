@@ -132,16 +132,15 @@ void HeapSorter::sort(){
 void introsort_util(vector<string>& arr, int low, int high, int depth_limit) {
     if (high - low < 11) {
         InsertionSorter::insertionsort(arr, low, high);
-        return;
     }
-    if (depth_limit == 0) {
+    else if (depth_limit == 0) {
         HeapSorter::heapsort(arr, low, high);
- return;
     }
-    // quicksort
-    int p = QuickSorter::partition(arr, low, high);
-    introsort_util(arr, low, p - 1, depth_limit - 1);
-    introsort_util(arr, p + 1, high, depth_limit - 1);
+    else{
+        int p = QuickSorter::partition(arr, low, high);
+        introsort_util(arr, low, p - 1, depth_limit - 1);
+        introsort_util(arr, p + 1, high, depth_limit - 1);
+    }
 }
 
 
