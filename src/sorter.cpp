@@ -47,10 +47,10 @@ void InsertionSorter::insertionsort(vector<string> & vec, int low, int high){
         string note = vec[i];
         int j = i-1;
         while(j >= low && vec[j] > note){
-            vec[i] = vec[j];
-            --j;
+            swap(vec[j+1], vec[j])
+            j--;
         }
-        vec[i] = note;
+        //vec[i] = note;
     }
 }
 
