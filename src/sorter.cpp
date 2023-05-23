@@ -70,16 +70,18 @@ string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
 }
 
 int QuickSorter::partition(vector<string> & vec, int low, int high){
-    string piv = select_pivot(vec, low, high);
-    int l = low, i = high - 1;
-    for(int j = l; j <= i; j++){
-        if(vec[j] <= piv){
-            l++;
-            swap(vec[l], vec[j]);
-        }
-    }
-    swap(vec[l+1], piv);
-    return l+1;
+    string pivot = select_pivot( vec, low, high );
+    int below = low, above = high - 1;
+    for ( ; ; ) {
+          while ( vec[below] < pivot ) { ++below; }
+          while ( pivot < vec[above] ) { --above; }
+          if ( below < above )    // two in wrong partition
+              swap( vec[below++], vec[above--] );
+          else break;
+    } 
+    swap( vec[below], vec[high] );  // restore pivot
+    return below;
+
     
     /*while(true){
         while(vec[l] < piv){l++;}
@@ -93,18 +95,20 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
 }
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
-    if(high-low < 11){
-        InsertionSorter::insertionsort(vec, low, high);
-    }
-    else{
-        int index = partition(vec, low, high);
-        quicksort(vec, low, index-1);
-        quicksort(vec,index+1, high);
+    if ( high - low < 11 )     // constexpr int K = 11;
+       insertionsort( vec, low, high );
+    else
+    {
+        //string pivot = median_of_three( vec, low, high );
+        int i = partition( vec, low, high);
+        quicksort( vec, low, i - 1 );
+        quicksort( vec, i + 1, high );
     }
 }
 
+
 void QuickSorter::sort(){
-    quicksort(vec, 0, vec.size());
+    quicksort(vec, 0, vec.size()-1);
 }
 
 void HeapSorter::heapify(vector<string> & vec, int high, int root){
