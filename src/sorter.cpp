@@ -90,8 +90,8 @@ void QuickSorter::quicksort(vector<string> & vec, int low, int high){
         else
         {
             //string pivot = median_of_three( vec, low, high );
-            int i = partition( vec, low, high-1);
-            quicksort( vec, low, i - 1 );
+            int i = partition( vec, low, high);
+            quicksort( vec, low, i);
             quicksort( vec, i + 1, high );
         }
     }
@@ -99,7 +99,7 @@ void QuickSorter::quicksort(vector<string> & vec, int low, int high){
 
 
 void QuickSorter::sort(){
-    quicksort(vec, 0, vec.size()-1);
+    quicksort(vec, 0, vec.size());
 }
 
 void HeapSorter::heapify(vector<string> & vec, int high, int root){
