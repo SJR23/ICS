@@ -69,17 +69,17 @@ string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
     return vec[high];
 }
 
-int partition( string A[], int low, int high ) {
-    string pivot = select_pivot( A, low, high );
+int QuickSorter::partition(vector<string> & vec, int low, int high){
+    string pivot = select_pivot(vec, low, high );
     int below = low, above = high - 1;
     for ( ; ; ) {
-          while ( A[below] < pivot ) { ++below; }
-          while ( pivot < A[above] ) { --above; }
+          while ( vec[below] < pivot ) { ++below; }
+          while ( pivot < vec[above] ) { --above; }
           if ( below < above )    // two in wrong partition
-              swap( A[below], A[above] );
+              swap( vec[below], vec[above] );
           else break;
     } 
-    swap( A[below], A[high] );  // restore pivot
+    swap( vec[below], vec[high] );  // restore pivot
     return below;
 }
 
