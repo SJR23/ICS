@@ -69,19 +69,20 @@ string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
     return vec[high];
 }
 
-int QuickSorter::partition(vector<string> & vec, int low, int high){
-    string piv = select_pivot(vec, low, high);
-    int l = low, i = high - 1;
-    while(true){
-        while(vec[l] < piv){l++;}
-        while(piv < vec[i]){i--;}
-        if(l < i){
-            swap(vec[l++],vec[i--]);
-        }else{break;}
-    }
-    swap(vec[l+1],vec[high]);
-    return l+1;
+int partition( string A[], int low, int high ) {
+    string pivot = select_pivot( A, low, high );
+    int below = low, above = high - 1;
+    for ( ; ; ) {
+          while ( A[below] < pivot ) { ++below; }
+          while ( pivot < A[above] ) { --above; }
+          if ( below < above )    // two in wrong partition
+              swap( A[below], A[above] );
+          else break;
+    } 
+    swap( A[below], A[high] );  // restore pivot
+    return below;
 }
+
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
     if(high-low < 11){
