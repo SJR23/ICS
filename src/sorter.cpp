@@ -47,7 +47,7 @@ void InsertionSorter::insertionsort(vector<string> & vec, int low, int high){
         string note = vec[i];
         int j = i-1;
         while(j >= low && vec[j] > note){
-            swap(vec[j+1], vec[j])
+            swap(vec[j+1], vec[j]);
             j--;
         }
         //vec[i] = note;
