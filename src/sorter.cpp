@@ -151,7 +151,7 @@ void IntroSorter::introsort(vector<string>& vec, int low, int high) {
 }
 
 void IntroSorter::sort() {
-    introsort(vec, 0, vec.size()-1);
+    introsort(vec, 0, vec.size());
 }
 
 void STLSorter::sort(){
@@ -236,6 +236,3 @@ void measure_partition(int k, string file_name, Sorter & L){
     in.close();
     cout << "\tP = " << eTime << endl;
 }
-
-
-    
