@@ -76,7 +76,7 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
           while ( vec[below] < pivot ) { ++below; }
           while ( pivot < vec[above] ) { --above; }
           if ( below < above )    // two in wrong partition
-              swap( vec[below], vec[above] );
+              swap( vec[below++], vec[above++] );
           else break;
     } 
     swap( vec[below], vec[high] );  // restore pivot
