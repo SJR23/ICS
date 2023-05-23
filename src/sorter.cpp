@@ -71,7 +71,7 @@ string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
 
 int QuickSorter::partition(vector<string> & vec, int low, int high){
     string pivotvalue = vec[low];
-    int i = low-1;
+    int i = low;
     int j;
 
     for(j=low+1; j<high; j++) {
@@ -81,7 +81,7 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
         }
     }
     swap(vec[i],vec[low]);
-    return high;
+    return i+1;
 }
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
