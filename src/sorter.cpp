@@ -123,7 +123,7 @@ void HeapSorter::heapsort(vector<string> & vec, int low, int high){
 }
 
 void HeapSorter::sort(){
-    heapsort(vec, 0, vec.size());
+    heapsort(vec, 0, vec.size()+1);
 }
 
 void IntroSorter::introsort(vector<string>& vec, int low, int high) {
