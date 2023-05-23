@@ -139,7 +139,7 @@ void introsort_util(vector<string>& arr, int low, int high, int depth_limit) {
  return;
     }
     // quicksort
-    int p = partition(arr, low, high);
+    int p = QuickSorter::partition(arr, low, high);
     introsort_util(arr, low, p - 1, depth_limit - 1);
     introsort_util(arr, p + 1, high, depth_limit - 1);
 }
