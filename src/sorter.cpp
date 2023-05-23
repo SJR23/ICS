@@ -70,19 +70,18 @@ string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
 }
 
 int QuickSorter::partition(vector<string> & vec, int low, int high){
-    string pivot = select_pivot(vec, low, high );
-    int below = low, above = high - 1;
-    for ( ; ; ) {
-          while ( vec[below] < pivot ) { ++below; }
-          while ( pivot < vec[above] ) { --above; }
-          if ( below < above )    // two in wrong partition
-              swap( vec[below++], vec[above++] );
-          else break;
-    } 
-    swap( vec[below], vec[high] );  // restore pivot
-    return below;
+    string piv = select_pivot(vec, low, high);
+    int l = low, i = high - 1;
+    while(true){
+        while(vec[l] < piv){l++;}
+        while(piv < vec[i]){i--;}
+        if(l < i){
+            swap(vec[l++],vec[i--]);
+        }else{break;}
+    }
+    swap(vec[l],vec[high]);
+    return l;
 }
-
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
     if(high-low < 11){
@@ -117,7 +116,7 @@ void HeapSorter::heapify(vector<string> & vec, int high, int root){
 
 void HeapSorter::heapsort(vector<string> & vec, int low, int high){
     int size = vec.size();
-    for(int root = size/2 -1; root >= 0; --root){
+    for(int root = size/2 -1; root >= 0; root--){
         heapify(vec, size, root);
     }
     for(int end = size-1; end>0; --end){
@@ -130,32 +129,29 @@ void HeapSorter::sort(){
     heapsort(vec, 0, vec.size());
 }
 
-void IntroSorter::introsort(vector<string>& vec, int low, int high) {
-    const int threshold = 16;
-    if (high - low < threshold) {
-        InsertionSorter::insertionsort(vec, low, high);
-    } 
-    if (log(high - low) <= 0) {
-        HeapSorter::heapsort(vec, low, high);
-    } 
-    else 
-    {
-        if(low < high){
-            if(high - low < threshold){
-                InsertionSorter::insertionsort(vec, low, high);
-            } 
-            else{
-                string pivot = QuickSorter::select_pivot(vec, low, high);
-                int index = QuickSorter::partition(vec, low, high);
-                introsort(vec, low, index - 1);
-                introsort(vec, index + 1, high);
-            }
-        }
+void introsort_util(vector<string>& arr, int low, int high, int depth_limit) {
+    if (high - low < 11) {
+        InsertionSorter::insertion_sort(arr, low, high);
+        return;
     }
+    if (depth_limit == 0) {
+        HeapSorter::heapsort(arr, low, high);
+ return;
+    }
+    // quicksort
+    int p = partition(arr, low, high);
+    introsort_util(arr, low, p - 1, depth_limit - 1);
+    introsort_util(arr, p + 1, high, depth_limit - 1);
+}
+
+
+void IntroSorter::introsort(vector<string>& vec, int low, int high) {
+    int depth_limit = 2 * log(high-low);
+    introsort_util(vec, low, high, depth_limit);
 }
 
 void IntroSorter::sort() {
-    introsort(vec, 0, vec.size() - 1);
+    introsort(vec, 0, vec.size());
 }
 
 void STLSorter::sort(){
