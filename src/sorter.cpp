@@ -68,7 +68,7 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
     int l = low;
     int i = high - 1;
     for(;;){
-        while(vec[below] < piv){++l;}
+        while(vec[l] < piv){++l;}
         while(piv < vec[i]){--i;}
         if(l < i){
             swap(vec[l++],vec[i--]);
