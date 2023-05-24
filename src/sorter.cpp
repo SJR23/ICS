@@ -55,7 +55,7 @@ void InsertionSorter::insertionsort(vector<string> & vec, int low, int high){
 }
 
 void InsertionSorter::sort(){
-    insertionsort(vec, 0, vec.size());
+    insertionsort(vec, 0, vec.size()-1);
 }
 
 string QuickSorter::select_pivot(vector<string> & vec, int low, int high){
