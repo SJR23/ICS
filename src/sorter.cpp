@@ -96,7 +96,7 @@ void QuickSorter::quicksort(vector<string> & vec, int low, int high){
 
 
 void QuickSorter::sort(){
-    quicksort(vec, 0, vec.size());
+    quicksort(vec, 0, vec.size()-1);
 }
 
 void HeapSorter::heapify(vector<string> & vec, int high, int root){
