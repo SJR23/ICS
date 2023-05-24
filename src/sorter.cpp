@@ -74,7 +74,7 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
 
     for(int j=low; j<high; j++) {
         if(vec[j]<=pivotvalue) {
-            swap(vec[i],vec[j]);
+            swap(vec[low],vec[j]);
             ++low;
         }
     }
@@ -98,7 +98,7 @@ void QuickSorter::quicksort(vector<string> & vec, int low, int high){
 
 
 void QuickSorter::sort(){
-    quicksort(vec, 0, vec.size()-1);
+    quicksort(vec, 0, vec.size());
 }
 
 void HeapSorter::heapify(vector<string> & vec, int high, int root){
