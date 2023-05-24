@@ -11,14 +11,8 @@ void Sorter::fill(int count, string file_name){
     ifstream file(file_name);
     if(file.is_open()){
         string note;
-        for(int i = 0; i < count; i++){
-            if(file >> note){
-                vec.push_back(note);
-            }
-            else{
-                break;
-            }
-        }
+        for(int i = 0; i < count && file>>note; i++)
+            vec.push_back(note);
         file.close();
     }
     else{
@@ -126,11 +120,12 @@ void HeapSorter::heapify(vector<string> & vec, int high, int root){
 }
 
 void HeapSorter::heapsort(vector<string> & vec, int low, int high){
-    for(int root = high / 2 - 1; root >= 0; root--){
-        heapify(vec, high, root);
+    int size = high-low;
+    for(int root = size/2-1; root >= 0; root--){
+        heapify(vec, size, root);
     }
-    for(int end = high - 1; end>=0; end--){
-        swap(vec[low], vec[end]);
+    for(int end = size-1; end>=0; end--){
+        swap(vec[low], vec[low+end]);
         heapify(vec, end, low);
     }
 }
