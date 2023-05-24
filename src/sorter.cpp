@@ -103,10 +103,10 @@ void HeapSorter::heapify(vector<string> & vec, int high, int root){
     int largest = root;
     int left = 2 * root + 1;
     int right = 2 * root + 2;
-    if(left < high && vec[left] > vec[largest]){
+    if(left < high && vec[left] < vec[largest]){
         largest = left;
     }
-    if(right < high && vec[right] > vec[largest]){
+    if(right < high && vec[right] < vec[largest]){
         largest = right;
     }
     if(largest != root){
@@ -120,7 +120,7 @@ void HeapSorter::heapsort(vector<string> & vec, int low, int high){
     for(int root = size/2-1; root >= 0; --root){
         heapify(vec, size, root);
     }
-    for(int end = size; end>=0; --end){
+    for(int end = size; end>0; --end){
         swap(vec[end], vec[low]);
         heapify(vec, end, low);
     }
