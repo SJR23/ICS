@@ -84,7 +84,7 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
     if(low >=high || low < 0) return;
-    p = partition(vec, low, high);
+    int p = partition(vec, low, high);
     
     quicksort(vec,low,p-1);
     quicksort(vec,p+1,high);
