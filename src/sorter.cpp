@@ -83,7 +83,7 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
 }
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
-    if (high - low < 11)     // constexpr int K = 11;
+    if (high - low <= 11)     // constexpr int K = 11;
         InsertionSorter::insertionsort(vec, low, high);
     else
     {
@@ -96,7 +96,7 @@ void QuickSorter::quicksort(vector<string> & vec, int low, int high){
 
 
 void QuickSorter::sort(){
-    quicksort(vec, 0, vec.size()-1);
+    quicksort(vec, 0, vec.size());
 }
 
 void HeapSorter::heapify(vector<string> & vec, int high, int root){
