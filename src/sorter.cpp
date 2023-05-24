@@ -99,10 +99,20 @@ void QuickSorter::sort(){
     quicksort(vec, 0, vec.size()-1);
 }
 
+int l(i){
+    if(i==0)return 1;
+    return 2*i+1;
+}
+
+int r(i){
+    if(i==0)return 2;
+    return 2*i+2;
+}
+
 void HeapSorter::heapify(vector<string> & vec, int high, int root){
     int largest = root;
-    int left = 2 * root + 1;
-    int right = 2 * root + 2;
+    int left = l(root);
+    int right = r(root);
     if(left < high && vec[left] > vec[largest]){
         largest = left;
     }
@@ -118,10 +128,10 @@ void HeapSorter::heapify(vector<string> & vec, int high, int root){
 void HeapSorter::heapsort(vector<string> & vec, int low, int high){
     int size = high-low+1;
     for(int root = size/2-1; root >= 0; root--){
-        heapify(vec, size, root);
+        heapify(vec, size, root+low);
     }
     for(int end = size-1; end>=0; end--){
-        swap(vec[low], vec[low+size-1]);
+        swap(vec[low], vec[low+end]);
         heapify(vec, end+1, low);
     }
 }
