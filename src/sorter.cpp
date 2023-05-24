@@ -73,7 +73,7 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
     string pivotvalue = select_pivot(vec, low, high);
 
     for(int j=low; j<high; j++) {
-        if(vec[j]<=pivotvalue) {
+        if(vec[j]<pivotvalue) {
             swap(vec[low],vec[j]);
             ++low;
         }
