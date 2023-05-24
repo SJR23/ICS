@@ -99,12 +99,12 @@ void QuickSorter::sort(){
     quicksort(vec, 0, vec.size()-1);
 }
 
-int l(i){
+int l(int i){
     if(i==0)return 1;
     return 2*i+1;
 }
 
-int r(i){
+int r(int i){
     if(i==0)return 2;
     return 2*i+2;
 }
