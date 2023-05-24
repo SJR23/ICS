@@ -120,14 +120,14 @@ void HeapSorter::heapsort(vector<string> & vec, int low, int high){
     for(int root = size/2 -1; root >= 0; root--){
         heapify(vec, size, root);
     }
-    for(int end = size; end>0; end--){
+    for(int end = size-1; end>0; end--){
         swap(vec[0], vec[end]);
         heapify(vec, end, 0);
     }
 }
 
 void HeapSorter::sort(){
-    heapsort(vec, 0, vec.size());
+    heapsort(vec, 0, vec.size()-1);
 }
 
 void introsort_util(vector<string>& arr, int low, int high, int depth_limit) {
