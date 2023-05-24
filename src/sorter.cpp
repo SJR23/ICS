@@ -86,7 +86,7 @@ void QuickSorter::quicksort(vector<string> & vec, int low, int high){
     if(low<high){
         int pivot = partition(vec, low, high);
         quicksort(vec, low, pivot-1);
-        quicksort(vec, pivot+1, high)l
+        quicksort(vec, pivot+1, high);
     }
     /*if (high - low < 11)     // constexpr int K = 11;
         InsertionSorter::insertionsort(vec, low, high);
