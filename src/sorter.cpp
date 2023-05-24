@@ -84,21 +84,21 @@ int QuickSorter::partition(vector<string> & vec, int low, int high){
 
 void QuickSorter::quicksort(vector<string> & vec, int low, int high){
     if(low<high){
-        if ( high - low < 11 )     // constexpr int K = 11;
-            InsertionSorter::insertionsort( vec, low, high );
+        if (high - low < 11)     // constexpr int K = 11;
+            InsertionSorter::insertionsort(vec, low, high);
         else
         {
             //string pivot = median_of_three( vec, low, high );
-            int i = partition( vec, low, high);
-            quicksort( vec, low, i);
-            quicksort( vec, i + 1, high );
+            int i = partition(vec, low, high);
+            quicksort(vec, low, i - 1);
+            quicksort(vec, i + 1, high);
         }
     }
 }
 
 
 void QuickSorter::sort(){
-    quicksort(vec, 0, vec.size());
+    quicksort(vec, 0, vec.size()-1);
 }
 
 void HeapSorter::heapify(vector<string> & vec, int high, int root){
