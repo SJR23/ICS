@@ -122,7 +122,7 @@ void HeapSorter::heapsort(vector<string> & vec, int low, int high){
     }
     for(int end = size-1; end>=0; end--){
         swap(vec[low], vec[low+end]);
-        heapify(vec, low+end, low);
+        heapify(vec, end, low);
     }
 }
 
