@@ -63,7 +63,7 @@ void file_to_graph(string filename, Graph& G){
         else
             break;
     }*/
-    file >> G;
+    f >> G;
     f.close();
 }
 
