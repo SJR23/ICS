@@ -56,13 +56,14 @@ void file_to_graph(string filename, Graph& G){
     ifstream f(filename);
     if(!f)
         error("Invalid file name: unable to open");
-    while(true){
+    /*while(true){
         Edge ed;
         if(f >> ed)
             G.push_back(ed);
         else
             break;
-    }
+    }*/
+    file >> G;
     f.close();
 }
 
