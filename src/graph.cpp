@@ -11,7 +11,7 @@ using namespace std;
 
 DisjointSet::DisjointSet(int numVertices){
     for(int i = 0; i < numVertices; i++)
-        subsets.push_back({i});
+        makeSet(i);
 }
 
 void DisjointSet::makeSet(Vertex x){
