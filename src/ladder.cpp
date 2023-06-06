@@ -98,10 +98,7 @@ void print_word_ladder(const vector<string> & ladder){
 }
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list){
-    if(begin_word == end_word){
-        return {begin_word};
-    }
-    queue<vector<string>> ladder_queue;
+    /*queue<vector<string>> ladder_queue;
     ladder_queue.push({begin_word});
     set<string> visited;
     visited.insert(begin_word);
@@ -112,9 +109,9 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         
         string last_word = ladder.back();
         
-        /*if(last_word == end_word){
+        if(last_word == end_word){
             return ladder;
-        }*/
+        }
         
         for(const string & w : word_list){
             if(is_adjacent(last_word, w)){
@@ -128,47 +125,35 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             }
         }
     }
-    return {};
-    /*vector<string> l;
+    return */
+    if(begin_word == end_word){
+        return {begin_word};
+    }
+    vector<string> ladder;
     queue<string> ladder_queue;
     ladder_queue.push(begin_word);
     set<string> visited;
     visited.insert(begin_word);
     
     while(!(ladder_queue.size() == 0)){
-        string ladder = ladder_queue.front();
+        string neww = ladder_queue.front();
         ladder_queue.pop();
-        //string last_word = ladder.back();
-        
         for(int i = 0; i < ladder.size(); i++){
-            //string lNew = last_word;
             for(char c = 'a'; c <= 'z'; c++){
-                //lNew[i] = c;
-                if(ladder[i] != c){
-                    string note = ladder;
-                    note[i] = c;
-                    if(word_list.count(note) && !visited.count(note)){
-                        visited.insert(note);
-                        ladder_queue.push(note);
-                        if(note == end_word){
-                            l = vector<string>{note};
-                            while(note != begin_word){
-                                note = ladder;
-                                for(int j = 0; j<note.size(); j++){
-                                    if(note[j] != ladder[j]){
-                                        note[j] = ladder[j];
-                                        break;
-                                    }
-                                }
-                                l.push_back(note);
-                            }
-                            reverse(l.begin(), l.end());
-                            break;
+                if(neww[i] != c){
+                    neww[i] = c;
+                    if(word_list.count(neww) && !visited.count(neww)){
+                        visited.insert(neww);
+                        vector<string> newl = ladder;
+                        newl.push_back(neww);
+                        if(neww == end_word){
+                            return newl;
                         }
+                        ladder_queue.push(neww);
                     }
                 }
             }
         }
     }
-    return l;*/
+    return {};
 }
