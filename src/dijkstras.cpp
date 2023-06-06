@@ -51,6 +51,7 @@ void print_path(const vector<int>& v, int total){
     if(v.empty()){
         cout << "Error" << endl;
         return;
+    }
     for(int i = 0; i<v.size(); i++){
         cout << v[i];
         if(i != v.size()-1)
@@ -58,7 +59,6 @@ void print_path(const vector<int>& v, int total){
     }
     cout << endl;
     cout << "Total cost is " << total << endl;
-    }
 }
 
 
