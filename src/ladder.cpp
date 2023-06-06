@@ -37,14 +37,14 @@ bool is_adjacent(const string & word1, const string & word2){
     if(len1 != len2) return false;
     
     for(size_t i = 0; i<len1; i++){
-            if(word1[i] != word2[i]){
-            if(i>0 && word1[i] == word2[i-1] || i<len1-1 && word1[i] == word2[i+1]){
+        if(word1[i] != word2[i]){
+            if(i>0 && word1[i] == word2[i-1] && word1[i] != word2[i-2]|| i<len1-1 && word1[i] == word2[i+1] && word1[i] != word2[i+2]){
                 return true;
             }
             else{
                 return false;
             }
-            }
+        }
     }
     return true;
 }
