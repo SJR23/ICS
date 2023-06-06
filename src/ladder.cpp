@@ -36,10 +36,15 @@ bool is_adjacent(const string & word1, const string & word2){
     int len2 = word2.length();
     if(len1 != len2) return false;
     
-    int count = 0;
     for(size_t i = 0; i<len1; i++){
-        if(word1[i] != word2[i]) count++;
-        if(count > 0) return false;
+            if(word1[i] != word2[i]){
+            if(i>0 && word1[i] == word2[i-1] || i<len1-1 && word1[i] == word2[i+1]){
+                return true;
+            }
+            else{
+                return false;
+            }
+            }
     }
     return true;
 }
