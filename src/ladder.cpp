@@ -126,34 +126,45 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         }
     }
     return */
-    if(begin_word == end_word){
+    if (begin_word == end_word) {
         return {begin_word};
     }
+
     vector<string> ladder;
-    queue<string> ladder_queue;
-    ladder_queue.push(begin_word);
+    queue<vector<string>> ladder_queue;
+    ladder_queue.push({begin_word});
     set<string> visited;
     visited.insert(begin_word);
-    
-    while(!(ladder_queue.size() == 0)){
-        string neww = ladder_queue.front();
+
+    while (!ladder_queue.empty()) {
+        vector<string> current_ladder = ladder_queue.front();
         ladder_queue.pop();
-        for(int i = 0; i < ladder.size(); i++){
+        string current_word = current_ladder.back();
+
+        for(int i = 0; i < current_word.size(); i++){
+            string new_word = current_word;
             for(char c = 'a'; c <= 'z'; c++){
-                if(neww[i] != c){
-                    neww[i] = c;
-                    if(word_list.count(neww) && !visited.count(neww)){
-                        visited.insert(neww);
-                        vector<string> newl = ladder;
-                        newl.push_back(neww);
-                        if(neww == end_word){
-                            return newl;
+                if(new_word[i] != c){
+                    new_word[i] = c;
+                    if(word_list.count(new_word) && !visited.count(new_word)){
+                        visited.insert(new_word);
+                        vector<string> new_ladder = current_ladder;
+                        new_ladder.push_back(new_word);
+                        if(new_word == end_word){
+                            return new_ladder;
                         }
-                        ladder_queue.push(neww);
+                        ladder_queue.push(new_ladder);
                     }
                 }
             }
         }
     }
+
     return {};
 }
+
+
+
+
+
+
