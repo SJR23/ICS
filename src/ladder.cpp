@@ -57,7 +57,7 @@ void load_words(set<string> & word_list, const string & file_name){
         return;
     }
     string w;
-    while(file >> w && !file.eof())
+    while(file >> w && !file.gocunt()!=0)
         word_list.insert(w);
     file.close();
 }
