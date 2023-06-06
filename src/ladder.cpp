@@ -106,6 +106,10 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         
         string last_word = ladder.back();
         
+        if(last_word == end_word){
+            return ladder;
+        }
+        
         for(const string & w : word_list){
             if(is_adjacent(last_word, w)){
                 if(visited.find(w) == visited.end()){
@@ -120,7 +124,3 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     }
     return {};
 }
-
-
-
-
