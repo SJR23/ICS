@@ -34,15 +34,16 @@ bool edit_distance_within(const std::string & str1, const std::string & str2, in
 bool is_adjacent(const string & word1, const string & word2){
     int len1 = word1.length();
     int len2 = word2.length();
-    if(len1 != len2) return false;
+    if (len1 != len2) {
+        return false;
+    }
     int c = 0;
-    for(size_t i = 0; i<len1; i++){
-        if(word1[i] != word2[i]){
-            if(c>0) return false;
+    for (int i = 0; i < len1; i++) {
+        if (word1[i] != word2[i]) {
             c++;
         }
     }
-    return true;
+    return c <= 1;
 }
 
 void load_words(set<string> & word_list, const string & file_name){
