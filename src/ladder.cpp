@@ -39,8 +39,9 @@ bool is_adjacent(const string & word1, const string & word2){
     int count = 0;
     for(size_t i = 0; i<len1; i++){
         if(word1[i] != word2[i]) count++;
+        if(count > 1) return false;
     }
-    return count == 1;
+    return true;
 }
 
 void load_words(set<string> & word_list, const string & file_name){
