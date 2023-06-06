@@ -47,7 +47,7 @@ bool is_adjacent(const string & word1, const string & word2){
             c++;
         }
     }
-    return c <= 1;
+    return c <= 2;
 }
 
 void load_words(set<string> & word_list, const string & file_name){
@@ -57,7 +57,7 @@ void load_words(set<string> & word_list, const string & file_name){
         return;
     }
     string w;
-    while(file >> w)
+    while(file >> w && !file.eof())
         word_list.insert(w);
     file.close();
 }
