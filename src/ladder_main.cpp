@@ -11,7 +11,7 @@ int main(){
 }
 
 void verify_word_ladder() {
-    /*set<string> word_list;
+    set<string> word_list;
     load_words(word_list, "words.txt");
     vector<string> ladder1 = generate_word_ladder("cat", "dog", word_list);
     cout << "'cat'->'dog': ";
@@ -24,7 +24,6 @@ void verify_word_ladder() {
     vector<string> ladder3 = generate_word_ladder("code", "data", word_list);
     cout << "'code'->'data': ";
     print_word_ladder(ladder3);
-    cout << endl;*/
-    return;
+    cout << endl;
 
 }
