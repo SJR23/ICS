@@ -48,7 +48,7 @@ bool is_adjacent(const string & word1, const string & word2){
             c++;
         }
     }
-    if(len1!=len2) c++;
+    if(len1!=len2 && c==0) c++;
     return c <= 1;
 }
 
