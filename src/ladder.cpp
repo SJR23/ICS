@@ -132,7 +132,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     set<string> visited;
     visited.insert(begin_word);
     
-    while(!ladder_queue.empty()){
+    while(!(ladder_queue.size() == 0)){
         string ladder = ladder_queue.front();
         ladder_queue.pop();
         //string last_word = ladder.back();
