@@ -95,7 +95,7 @@ void print_word_ladder(const vector<string> & ladder){
 }
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list){
-    queue<vector<string>> ladder_queue;
+    /*queue<vector<string>> ladder_queue;
     ladder_queue.push({begin_word});
     set<string> visited;
     visited.insert(begin_word);
@@ -122,5 +122,34 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             }
         }
     }
+    return */
+    
+    queue<vector<string>> ladder_queue;
+    ladder_queue.push({begin_word});
+    set<string> visited;
+    visited.insert(begin_word);
+    
+    while(!ladder_queue.empty()){
+        vector<string> ladder = ladder_queue.front();
+        ladder_queue.pop();
+        string last_word = ladder.back();
+        
+        for(int i = 0; i < last_word.length(); i++){
+            string lNew = last_word;
+            for(char c = 'a'; c <= 'z'; c++){
+                lNew[i] = c;
+                if(word_list.count(lNew)>0 && visited.count(lNew)==0){
+                    visited.insert(lNew);
+                    vector<string> nl = ladder;
+                    nl.push_back(lNew);
+                    if(lNew == end_word){
+                        return nl;
+                    }
+                    ladder_queue.push(nl);
+                }
+            }
+        }
+    }
     return {};
+    
 }
