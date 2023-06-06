@@ -46,10 +46,11 @@ bool is_adjacent(const string & word1, const string & word2){
     for(int i = 0; i < small; i++){
         if(word1[i] != word2[i]){
             c++;
+            if(c>1)return false;
         }
     }
-    if(len1!=len2) c=1;
-    return c <= 1;
+    //if(len1!=len2) c=1;
+    return true;
 }
 
 void load_words(set<string> & word_list, const string & file_name){
@@ -59,7 +60,7 @@ void load_words(set<string> & word_list, const string & file_name){
         return;
     }
     string w;
-    while(file >> w && !file.gcount()!=0)
+    while(file >> w)
         word_list.insert(w);
     file.close();
 }
