@@ -36,14 +36,16 @@ vector<int> dijkstra_shortest_path(const Graph& graph, int source, vector<int>& 
     return distance;
 }
 
-vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector<int>& previous, int destination){
+vector<int> extract_shortest_path(const vector<int>& distances, const vector<int>& previous, int destination){
     vector<int> store;
-    int curr = destination;
-    while(curr >= 0){
+    for(int curr = destination; curr != -1; curr = previous[curr]){
         store.push_back(curr);
-        curr = previous[curr];
     }
     reverse(store.begin(), store.end());
+    int total_cost = 0;
+    for(int i = 0; i < store.size() - 1; i++){
+        total_cost += distances[store[i]];
+    }
     return store;
 }
 
