@@ -49,8 +49,8 @@ bool is_adjacent(const string & word1, const string & word2){
             if(c>1)return false;
         }
     }
-    //if(len1!=len2) c=1;
-    return true;
+    if(len1!=len2) c=1;
+    return c<=1;
 }
 
 void load_words(set<string> & word_list, const string & file_name){
@@ -128,31 +128,44 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     return */
     
     queue<vector<string>> ladder_queue;
-    ladder_queue.push({begin_word});
+    ladder_queue.push(begin_word);
     set<string> visited;
     visited.insert(begin_word);
     
     while(!ladder_queue.empty()){
-        vector<string> ladder = ladder_queue.front();
+        string ladder = ladder_queue.front();
         ladder_queue.pop();
-        string last_word = ladder.back();
+        //string last_word = ladder.back();
         
-        for(int i = 0; i < last_word.length(); i++){
-            string lNew = last_word;
+        for(int i = 0; i < ladder.length(); i++){
+            //string lNew = last_word;
             for(char c = 'a'; c <= 'z'; c++){
-                lNew[i] = c;
-                if(word_list.count(lNew)>0 && visited.count(lNew)==0){
-                    visited.insert(lNew);
-                    vector<string> nl = ladder;
-                    nl.push_back(lNew);
-                    if(lNew == end_word){
-                        return nl;
+                //lNew[i] = c;
+                if(ladder[i] != c){
+                    string note = ladder;
+                    note[i] = c;
+                    if(word_list.count(note) && !visited.count(note)){
+                        visited.insert(note);
+                        ladder_queue.push(note);
+                        if(note == end_word){
+                            vector<string> l;
+                            while(note != begin_word){
+                                l.push_back(note);
+                                note = ladder;
+                                for(int j = 0; j<note.size(); j++){
+                                    if(note[j] != ladder[j]){
+                                        note[j] = ladder[j];
+                                        break;
+                                    }
+                                }
+                            }
+                            reverse(l.begin(), l.end());
+                            return l;
+                        }
                     }
-                    ladder_queue.push(nl);
                 }
             }
         }
     }
     return {};
-    
 }
