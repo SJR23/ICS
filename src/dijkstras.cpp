@@ -60,8 +60,8 @@ void print_path(const vector<int>& v, int total){
             cout << " ";
     }
     if(!(v.empty()))
-        cout << " " << endl;
-    cout << "Total cost is " << total << endl;
+        cout << " ";
+    cout << endl << "Total cost is " << total << endl;
 }
 
 
