@@ -35,8 +35,8 @@ bool is_adjacent(const string & word1, const string & word2){
     int len1 = word1.length();
     int len2 = word2.length();
     if(len1 >len2){
-        swap(word1, word2);
-        swap(len1, len2);
+        std::swap(word1, word2);
+        std::swap(len1, len2);
     }
     int c = 0;
     for(int i = 0; i < len1; i++){
