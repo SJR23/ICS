@@ -34,26 +34,43 @@ bool edit_distance_within(const std::string & str1, const std::string & str2, in
     return twoD[len1][len2] <= d;
 }
 
-bool is_adjacent(const string & word1, const string & word2){
+bool is_adjacent(const string& word1, const string& word2) {
     int len1 = word1.length();
     int len2 = word2.length();
-    int c = 0;
-    if(abs(len1-len2) > 1) return false;
-    int small = 0;
-    if(len2 > len1){
-        small = len1;
-    }
-    else{
-        small = len2;
-    }
-    for(int i = 0; i < small; i++){
-        if(word1[i] != word2[i]){
-            c++;
-            //if(c>1)return false;
+    int editDistance = abs(len1 - len2);
+
+    if (editDistance > 1)
+        return false;
+
+    if (len1 == len2) {
+        int diffCount = 0;
+        for (int i = 0; i < len1; i++) {
+            if (word1[i] != word2[i]) {
+                diffCount++;
+                if (diffCount > 1)
+                    return false;
+            }
         }
+        return true;
+    } else {
+        int i = 0, j = 0;
+        int diffCount = 0;
+        while (i < len1 && j < len2) {
+            if (word1[i] != word2[j]) {
+                diffCount++;
+                if (diffCount > 1)
+                    return false;
+                if (len1 < len2)
+                    j++;
+                else
+                    i++;
+            } else {
+                i++;
+                j++;
+            }
+        }
+        return true;
     }
-    if(len1!=len2) c=1;
-    return c<=1;
 }
 
 void load_words(set<string> & word_list, const string & file_name){
@@ -169,5 +186,5 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             }
         }
     }
-    return {};
+    return vector<string>();
 }
