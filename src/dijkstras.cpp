@@ -37,16 +37,15 @@ vector<int> dijkstra_shortest_path(const Graph& graph, int source, vector<int>& 
 }
 
 vector<int> extract_shortest_path(const vector<int>& distances, const vector<int>& previous, int destination){
-    vector<int> store;
-    for(int curr = destination; curr != -1; curr = previous[curr]){
-        store.push_back(curr);
-    }
-    reverse(store.begin(), store.end());
-    int total_cost = 0;
-    for(int i = 0; i < store.size() - 1; i++){
-        total_cost += distances[store[i]];
-    }
-    return store;
+    vector<int> path;
+    int curr = destination;
+    if(previous[curr] == -1) return path;
+    
+    while(curr >= 0){
+        path.push_back(curr);
+        curr = previous[curr];
+    reverse(path.begin(), path.end());
+    return path;
 }
 
 void print_path(const vector<int>& v, int total){
