@@ -40,7 +40,7 @@ vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector
     vector<int> path;
     int curr = destination;
     if(previous[curr] == -1) return path;
-    for(int i = 0; curr != -1; i++; curr = previous[curr]){
+    for(int i = 0; curr != -1; i++, curr = previous[curr]){
         path.push_back(curr);
     }
     //path.push_back(curr);
