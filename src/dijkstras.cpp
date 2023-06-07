@@ -39,7 +39,6 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
     
     if(distances[destination] == INF) return path;
     int curr = destination;
-    //if(previous[curr] == -1) return path;
     while(curr != -1){
         path.push_back(curr);
         curr = previous[curr];

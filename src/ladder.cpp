@@ -40,8 +40,16 @@ bool is_adjacent(const string& word1, const string& word2) {
 
     if(abs(len1-len2) > 1)
         return false;
-
-    if(len1 == len2){
+    
+    if(len1 == len2)
+        return edit_distance_within(word1, word2, 1);
+    if(len1 < len2){
+        return edit_distance_within(word1+' ', word2, 1);
+    }
+    else{
+        return edit_distance_within(word1, word2+' ', 1);
+    }
+    /*if(len1 == len2){
         int note = 0;
         for(int i = 0; i < len1; i++){
             if(word1[i] != word2[i]){
@@ -67,7 +75,8 @@ bool is_adjacent(const string& word1, const string& word2) {
             i++; j++;
         }
     }
-    return true;
+    return true;*/
+    
 }
 
 void load_words(set<string> & word_list, const string & file_name){
@@ -83,18 +92,6 @@ void load_words(set<string> & word_list, const string & file_name){
 }
 
 void print_word_ladder(const vector<string> & ladder){
-    /*if(ladder.empty()){
-        cout << "No word ladder found." << endl;
-        return;
-    }
-    else{
-        cout << "Word ladder found: ";
-        for(const string& word : ladder){
-            cout << word << " ";
-        }
-        cout << endl;
-    }*/
-    //cout << ladder;
     int c = 0;
     vector<string> store;
     for(const string & word : ladder){
