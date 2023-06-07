@@ -43,8 +43,8 @@ vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector
     for(int i = 0; curr != -1; i++, curr = previous[curr]){
         path.push_back(curr);
     }
-    if(curr != -1){
-        path.push_back(curr);}
+    if(previous[curr] != -1)
+        path.push_back(curr);
     reverse(path.begin(), path.end());
     return path;
 }
