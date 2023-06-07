@@ -18,7 +18,7 @@ vector<int> dijkstra_shortest_path(const Graph& graph, int source, vector<int>& 
     pq.push({0, source});
 
     while(!pq.empty()){
-        int u = pq.top().first;
+        int u = pq.top().second;
         pq.pop();
         if(visited[u]) continue;
         visited[u] = true;
