@@ -125,7 +125,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             }
         }
     }
-    return */
+    return {};*/
     if (begin_word == end_word) {
         return {begin_word};
     }
@@ -159,7 +159,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
             }
         }
     }
-
+    cout << "huh" < endl;
     return {};
 }
 
