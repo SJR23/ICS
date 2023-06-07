@@ -4,6 +4,9 @@
 #include <queue>
 #include <set>
 #include <string>
+#include <stack>
+#include <algorithm>
+
 using namespace std;
 
 void error(string word1, string word2, string msg){
@@ -99,26 +102,39 @@ void print_word_ladder(const vector<string> & ladder){
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list) {
     if (begin_word == end_word) {
-        return {begin_word};
+        return {};
     }
-    vector<string> ladder;
-    queue<vector<string>> ladder_queue;
-    ladder_queue.push({begin_word});
+    
+    //vector<string> ladder;
+    queue<stack<string>> ladder_queue;
     set<string> visited;
-    visited.insert(begin_word);
+    
+    stack<string> lad;
+    lad.push(begin_word);
+    ladder_queue.push(lad);
+    //visited.insert(begin_word);
+    
     while (!ladder_queue.empty()) {
-        vector<string> current_ladder = ladder_queue.front();
+        stack<string> current_ladder = ladder_queue.front();
         ladder_queue.pop();
-        string current_word = current_ladder.back();
-
-        for (const string& word : word_list) {
-            if (is_adjacent(current_word, word) && !visited.count(word)) {
-                visited.insert(word);
-                vector<string> new_ladder = current_ladder;
-                new_ladder.push_back(word);
-                if (word == end_word) {
-                    return new_ladder;
-                }
+        string current_word = current_ladder.top();
+        
+        if(current_word == end_word){
+            vector<string> word_lad;
+            while(!current_ladder.empty()){
+                word_lad.push_back(current_ladder.top());
+                current_ladder.pop();
+            }
+            reverse(word_lad.begin(), word_lad.end());
+            return word_lad;
+        }
+        
+        visited.insert(current_word);
+        for (const string& word : word_list){
+            if (is_adjacent(current_word, word) && !visited.count(word)){
+                //visited.insert(word);
+                stack<string> new_ladder = current_ladder;
+                new_ladder.push(word);
                 ladder_queue.push(new_ladder);
             }
         }
