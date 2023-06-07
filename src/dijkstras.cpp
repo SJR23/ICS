@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <queue>
+#include <functional>
 #include <limits>
 #include <stack>
 #include "dijkstras.h"
@@ -19,6 +20,7 @@ vector<int> dijkstra_shortest_path(const Graph& graph, int source, vector<int>& 
     });
     pq.push({0, source});
 
+    
     while(!pq.empty()){
         int u = pq.top().second;
         pq.pop();
