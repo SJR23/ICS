@@ -2,7 +2,6 @@
 #include <fstream>
 #include <vector>
 #include <queue>
-#include <functional>
 #include <limits>
 #include <stack>
 #include "dijkstras.h"
@@ -15,12 +14,9 @@ vector<int> dijkstra_shortest_path(const Graph& graph, int source, vector<int>& 
     vector<int> distance(n, INF);
     vector<bool> visited(n, false);
     distance[source] = 0;
-    priority_queue<pair<int, int>, vector<pair<int, int>>, function<bool(const pair<int, int>&, const pair<int, int>&)>> pq([](const pair<int, int>& a, const pair<int, int>& b){
-        return a.first > b.first;
-    });
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     pq.push({0, source});
 
-    
     while(!pq.empty()){
         int u = pq.top().second;
         pq.pop();
@@ -47,6 +43,7 @@ vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector
     for(int i = 0; curr != -1; i++, curr = previous[curr]){
         path.push_back(curr);
     }
+    path.push_back();
     reverse(path.begin(), path.end());
     return path;
 }
